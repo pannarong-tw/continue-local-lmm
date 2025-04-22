@@ -13,9 +13,9 @@ Run the setup script to install the necessary dependencies:
 ```bash
 bash scripts/setup-ollama.sh
 ```
-Run the setup script to install dependencies:
-This will:
-- Install Homebrew
+
+This script will:
+- Install Homebrew (if not already installed)
 - Install Ollama
 
 ---
@@ -26,8 +26,7 @@ Start the Ollama server with:
 ```bash
 ollama serve
 ```
-By default, the server runs on port `11434`.
-You can change this by setting the `PORT` environment variable.
+By default, the server runs on port `11434`. You can change this by setting the `PORT` environment variable.
 
 Once the server is running, open a new terminal tab to continue.
 
@@ -40,18 +39,16 @@ Continue.dev requires three types of models to function properly:
 - Autocomplete model – powers inline code suggestions
 - Embeddings model – enables context and semantic search
 
-You can choose from various compatible models, but the following are recommended:
+Recommended models:
 ```bash
 ollama pull llama3.1:8b                  # Chat model
 ollama pull qwen2.5-coder:1.5b-base      # Autocomplete model
 ollama pull nomic-embed-text:latest      # Embeddings model
 ```
 
-These commands will download and load the models locally for use with Continue.dev.
-
 Helpful commands:
 
-- View installed models:
+- List installed models:
 ```bash
 ollama list
 ```
@@ -66,9 +63,30 @@ Browse available models: [Ollama Model Library](https://ollama.com/library)
 
 ## Using Continue.dev
 
-To use Continue.dev first install the [VSCode Continue.dev extension](https://marketplace.visualstudio.com/items?itemName=Continue.continue) in your IDE.
+1. Install the Continue.dev extension for VSCode or your supported IDE.
 
-Once the required models are pulled and the Ollama server is running, you're all set to use Continue.dev with local LLM support.
+2. Update your `~/.continue/config.yaml` file with your local model configurations:
+```yaml
+# Specify the models used by Continue.dev
+models:
+  - name: Ollama Llama 3.1
+    provider: ollama
+    model: llama3.1:8b
+    roles:
+      - chat
+  - name: Qwen2.5 Coder
+    provider: ollama
+    model: qwen2.5-coder:1.5b-base
+    roles:
+      - autocomplete
+  - name: Nomic Embed Text
+    provider: ollama
+    model: nomic-embed-text:latest
+    roles:
+      - embed
+```
+
+Once your models are pulled and the Ollama server is running, Continue.dev should be ready to use with local LLM support.
 
 ---
 
