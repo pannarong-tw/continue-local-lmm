@@ -90,25 +90,45 @@ Once your models are pulled and the Ollama server is running, Continue.dev shoul
 
 ---
 
-## Extra: Running the UI (Optional)
-This section is recommended if you want to use a UI to interact with your local models.
+## Extra: Running a Web UI (Optional)
 
-1. Complete the setup up to **Running a Model**.
-2. Run the following to install Docker and Docker Compose:
-   ```bash
-   bash scripts/setup-docker.sh
+If you'd like a visual interface for interacting with your local LLMs, you can run **Open WebUI**—a simple web-based frontend. We’ll use **Docker Compose** to set it up.
+
+### Prerequisites
+Make sure you’ve completed the earlier steps up to **Pulling Required Models** and that the Ollama server is running.
+
+### 1. Install Docker and Docker Compose
+Run the following script to install both:
+```bash
+bash scripts/setup-docker.sh
    ```
-3. Start Colima (a Docker alternative for macOS):
-   ```bash
-    colima start --memory 8 --cpu 4
-    ``` 
-    To stop Colima
-    ```bash
-    colima stop
-    ```
-    To check Colima's status:
-    ```bash
-    colima status
-    ```
-4. Run the command to start the UI
-   
+### 2. Start Colima (a Docker alternative for macOS):
+
+Colima is a lightweight alternative to Docker Desktop on macOS. To start it with enough resources:
+
+```bash
+colima start --memory 8 --cpu 4
+``` 
+- stop Colima
+```bash
+colima stop
+```
+
+- Check Colima's status:
+```bash
+colima status
+```
+
+### 3. Launch the Web UI
+
+With Colima running, start the Open WebUI container:
+
+```bash
+docker-compose up
+```
+  
+Once it’s up, open your browser and go to:
+
+> http://localhost:3000
+
+You should now be able to interact with your local models through a friendly UI.
