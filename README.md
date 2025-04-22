@@ -33,17 +33,21 @@ Once the server is running, open a new terminal tab to continue.
 
 ---
 
-## Running a Model
+## Pulling Required Models
+Continue.dev requires three types of models to function properly:
 
-To run a specific model, use:
+- Chat model – handles natural language conversation
+- Autocomplete model – powers inline code suggestions
+- Embeddings model – enables context and semantic search
+
+You can choose from various compatible models, but the following are recommended:
 ```bash
-ollama run <model_name>
+ollama pull llama3.1:8b                  # Chat model
+ollama pull qwen2.5-coder:1.5b-base      # Autocomplete model
+ollama pull nomic-embed-text:latest      # Embeddings model
 ```
-For example, to run the `qwen2.5:1.5b` model:, run the following command:
-```bash
-ollama run qwen2.5:1.5b
-```
-This will download and load the model, making it available to Continue.dev.
+
+These commands will download and load the models locally for use with Continue.dev.
 
 Helpful commands:
 
@@ -54,13 +58,17 @@ ollama list
 
 - Remove a model:
 ```bash
-ollama remove <model_name>
+ollama rm <model_name>
 ```
 Browse available models: [Ollama Model Library](https://ollama.com/library)
 
 ---
 
 ## Using Continue.dev
+
+To use Continue.dev first install the [VSCode Continue.dev extension](https://marketplace.visualstudio.com/items?itemName=Continue.continue) in your IDE.
+
+Once the required models are pulled and the Ollama server is running, you're all set to use Continue.dev with local LLM support.
 
 ---
 
